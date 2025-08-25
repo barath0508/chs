@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Siva Darling 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 40px;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 70px;
+      color: #ff2e77;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff2e77;
+      margin-bottom: 15px;
+    }
+    .quote {
+      font-size: 22px;
+      font-style: italic;
+      color: #333;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 14px 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      margin-bottom: 40px;
+    }
+    /* Gift Box Wrapper */
+    .gift-wrapper {
+      border: 6px dashed #ff2e77;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      margin-top: 40px;
+    }
+    /* Gift Box */
+    .gift {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      background: #ff4d6d;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: bounce 1.5s infinite;
+      margin: 0 auto;
+    }
+    .gift:before, .gift:after {
+      content: "";
+      position: absolute;
+      background: #fff;
+    }
+    .gift:before {
+      width: 25px;
+      height: 100%;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+    .gift:after {
+      height: 25px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    .lid {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 140px;
+      height: 50px;
+      background: #ff4d6d;
+      border-radius: 8px;
+      transition: transform 0.6s ease;
+    }
+    .lid:before {
+      content: "🎀";
+      position: absolute;
+      font-size: 32px;
+      top: -28px;
+      left: 50px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .open .lid {
+      transform: translateY(-70px) rotate(-15deg);
+    }
+    .surprise {
+      display: none;
+      margin-top: 25px;
+      font-size: 26px;
+      color: #ff2e77;
+      font-weight: bold;
+      text-shadow: 0 0 8px #fff;
+    }
+    .open + .surprise {
+      display: block;
+      animation: pop 1s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday Siva Darling 🎂</h1>
+  <div class="quote">"keep smiling and may your green comes soon"</div>
+
+  <!-- Gift inside border -->
+  <div class="gift-wrapper">
+    <div class="gift" onclick="openGift(this)">
+      <div class="lid"></div>
+    </div>
+    <div class="surprise">🎁 Surprise Gift of Love & Happiness 💖</div>
+  </div>
+
+  <script>
+    function openGift(el) {
+      if(el.classList.contains('open')) return;
+      el.classList.add('open');
+      launchConfetti();
+    }
+
+    // Auto-open gift after 3s
+    setTimeout(() => {
+      openGift(document.querySelector('.gift'));
+    }, 3000);
+
+    function launchConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const conf = document.createElement('div');
+        conf.classList.add('confetti');
+        document.body.appendChild(conf);
+        conf.style.left = Math.random() * 100 + "vw";
+        conf.style.backgroundColor = randomColor();
+        conf.style.animationDuration = (2 + Math.random() * 3) + "s";
+        conf.style.opacity = Math.random();
+        conf.style.transform = `rotate(${Math.random()*360}deg)`;
+        setTimeout(() => conf.remove(), 5000);
+      }
+    }
+    function randomColor() {
+      const colors = ["#ff2e77","#ffdd00","#00c9ff","#9dff00","#ff7a00","#8e44ad"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
